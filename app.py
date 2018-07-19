@@ -4,7 +4,7 @@ import os
 from tkinter import filedialog
 from tkinter import *
 import magic
-import string
+
 from to_utf8 import process as toUTF8
 
 def main():
@@ -38,15 +38,9 @@ def main():
                 with open(output , 'w' , encoding = 'UTF-8') as fw:
                     for line in f:
                         print (line)
-                        # if '\u0' in line:
-                        #     print ("jojo")
                         linea = _removeNonAscii(line)
-                        print (linea)
-                        
                         k = filter_nonprintable(linea)
                         fw.write(k)
-
-            # bihurtzen(fitxategia,output,charset)
 
             return dev_var.set(fitxategia)
 
@@ -76,16 +70,9 @@ def main():
         lblMime = Label(raiz , text = "" , relief = RAISED , justify = LEFT)
         lblMime.pack(padx = 5 , pady = 5 , fill = BOTH)
 
-        # Bihurtu botoia
-
-        # bouton_recup = Button(raiz , text = "Bihurtu" , relief = RAISED ,
-        #                       command = bihurtzen(dev_var,'output.txt', original_encoding)
-        #                       )
-        # bouton_recup.pack(side = RIGHT , padx = 5 , pady = 5)
-
         # Irten botoia
         bouton_quit = Button(raiz , text = 'Irten' , relief = RAISED , command = raiz.quit)
-        bouton_quit.pack(side = LEFT , padx = 5 , pady = 5)
+        bouton_quit.pack( padx = 5 , pady = 5)
 
         raiz.mainloop()
 
