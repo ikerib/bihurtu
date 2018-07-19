@@ -11,10 +11,8 @@ Last update: 2017-12-16 (yyyy-mm-dd)
 
 import os
 import sys
-from pathlib import Path
 
-import config as cfg
-from lib import fs
+from lib import fs , config as cfg
 from lib.process import get_simple_cmd_output
 from pathlib import Path
 fs.check_if_available(cfg.FILE , "Error: {} is not available!".format(cfg.FILE))
@@ -59,7 +57,7 @@ def process( fname ):
 
     #cmd = 'iconv --from-code={src} --to-code=utf-8 "{f}" -o "{o}"'.format(src = charset , f = fname, o=output)
     #os.system(cmd)
-    return charset, output
+    return charset, output, fic
 
 
 def main():
