@@ -3,6 +3,7 @@
 import os
 from tkinter import filedialog
 from tkinter import *
+from pathlib import Path
 
 from lib.to_utf8 import process as toUTF8
 
@@ -21,10 +22,18 @@ def main():
 
             # lblInfo.config(text = "Mota => " + magic.from_file(fitxategia))
             # lblMime.config(text = "MIME => " + magic.from_file(fitxategia, mime = TRUE))
+            try:
+                charset, output, final_filename = toUTF8 (fitxategia)
+            finally:
+                p = Path(fitxategia)
+                ff = os.path.splitext(fitxategia)[0]
 
-            charset, output, final_filename = toUTF8 (fitxategia)
-
-
+                textToReplace = '.' + p.suffix
+                textReplaceWith = '-converted.' + p.suffix
+                fic = p.name.replace(p.suffix, '-converted' + p.suffix)
+                charset = "-"
+                output = str(p.parent) + '/' + fic
+                final_filename=""
             def filter_nonprintable( text ):
                 import string
                 # Get the difference of all ASCII characters from the set of printable characters

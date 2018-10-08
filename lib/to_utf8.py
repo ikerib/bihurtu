@@ -44,7 +44,7 @@ def process( fname ):
         if not force_conversion:
             print("Warning: the input file is already in UTF-8 encoding." , file = sys.stderr)
             print("Tip: use the -f option to force conversion." , file = sys.stderr)
-            return
+            # return
     # else
     p = Path(fname)
     ff = os.path.splitext(fname)[0]
